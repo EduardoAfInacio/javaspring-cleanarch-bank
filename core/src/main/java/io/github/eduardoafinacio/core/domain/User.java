@@ -1,5 +1,7 @@
 package io.github.eduardoafinacio.core.domain;
 
+import io.github.eduardoafinacio.core.domain.enums.UserTypeEnum;
+
 import java.util.UUID;
 import java.time.LocalDateTime;
 
