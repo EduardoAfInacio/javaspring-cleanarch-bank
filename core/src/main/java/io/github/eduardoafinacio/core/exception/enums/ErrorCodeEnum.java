@@ -1,6 +1,7 @@
 package io.github.eduardoafinacio.core.exception.enums;
 
 public enum ErrorCodeEnum {
+    ON0001("Tax number is invalid", "ON0001"),
     ;
 
     private String message;

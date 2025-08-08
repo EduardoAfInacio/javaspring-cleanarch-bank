@@ -1,5 +1,8 @@
 package io.github.eduardoafinacio.core.domain;
 
+import io.github.eduardoafinacio.core.exception.TaxNumberException;
+import io.github.eduardoafinacio.core.exception.enums.ErrorCodeEnum;
+
 public class TaxNumber {
     private String value;
 
@@ -18,7 +21,7 @@ public class TaxNumber {
         return this.value;
     }
 
-    private Boolean isValid(String taxNumber) {
+    private Boolean isValid(String taxNumber) throws Exception{
         String normalized = taxNumber.replaceAll("[^0-9]", "");
 
         if (normalized.length() == 11) {
