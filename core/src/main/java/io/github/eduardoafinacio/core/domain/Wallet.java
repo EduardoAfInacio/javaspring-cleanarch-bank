@@ -47,11 +47,11 @@ public class Wallet {
 
     public void transferValue(BigDecimal value) {
         if(this.user.getType() == UserTypeEnum.SHOPKEEPER) {
-            throw Exception;
+            //throw Exception;
         }
 
         if(this.balance.compareTo(value) < 0) {
-            throw Exception;
+            //throw Exception;
         }
 
         this.balance = this.balance.subtract(value);
