@@ -4,6 +4,7 @@ public enum ErrorCodeEnum {
     ON0001("Tax number is invalid", "ON-0001"),
     TR0001("Transaction cannot be made by a shopkeeper", "TR-0001"),
     TR0002("Unavailable balance", "TR-0002"),
+    TRP0001("Transaction PIN is invalid", "TRP-0001"),
     ;
 
     private String message;
