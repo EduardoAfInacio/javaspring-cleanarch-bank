@@ -2,6 +2,8 @@ package io.github.eduardoafinacio.core.exception.enums;
 
 public enum ErrorCodeEnum {
     ON0001("Tax number is invalid", "ON-0001"),
+    TR0001("Transaction cannot be made by a shopkeeper", "TR-0001"),
+    TR0002("Unavailable balance", "TR-0002"),
     ;
 
     private String message;

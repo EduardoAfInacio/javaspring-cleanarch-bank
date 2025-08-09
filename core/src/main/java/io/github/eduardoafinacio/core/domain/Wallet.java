@@ -1,6 +1,8 @@
 package io.github.eduardoafinacio.core.domain;
 
 import io.github.eduardoafinacio.core.domain.enums.UserTypeEnum;
+import io.github.eduardoafinacio.core.exception.TransferException;
+import io.github.eduardoafinacio.core.exception.enums.ErrorCodeEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -45,13 +47,13 @@ public class Wallet {
         this.balance = this.balance.add(value);
     }
 
-    public void transferValue(BigDecimal value) {
+    public void transferValue(BigDecimal value) throws TransferException{
         if(this.user.getType() == UserTypeEnum.SHOPKEEPER) {
-            //throw Exception;
+            throw new TransferException(ErrorCodeEnum.TR0001.getMessage(), ErrorCodeEnum.TR0001.getCode());
         }
 
         if(this.balance.compareTo(value) < 0) {
-            //throw Exception;
+            throw new TransferException(ErrorCodeEnum.TR0002.getMessage(), ErrorCodeEnum.TR0002.getCode());
         }
 
         this.balance = this.balance.subtract(value);
