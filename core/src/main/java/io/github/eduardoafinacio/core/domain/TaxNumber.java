@@ -8,11 +8,11 @@ public class TaxNumber {
 
     public TaxNumber() {}
 
-    public TaxNumber(String taxNumber) throws Exception{
+    public TaxNumber(String taxNumber) throws TaxNumberException{
         setValue(taxNumber);
     }
 
-    public void setValue(String value) throws Exception {
+    public void setValue(String value) throws TaxNumberException {
         if(!isValid(value)) throw new TaxNumberException(ErrorCodeEnum.ON0001.getMessage(), ErrorCodeEnum.ON0001.getCode());
         this.value = value;
     }
@@ -21,7 +21,7 @@ public class TaxNumber {
         return this.value;
     }
 
-    private Boolean isValid(String taxNumber) throws Exception{
+    private Boolean isValid(String taxNumber) throws TaxNumberException{
         String normalized = taxNumber.replaceAll("[^0-9]", "");
 
         if (normalized.length() == 11) {
