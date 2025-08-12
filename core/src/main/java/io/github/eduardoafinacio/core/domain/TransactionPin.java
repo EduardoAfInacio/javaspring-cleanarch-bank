@@ -24,9 +24,9 @@ public class TransactionPin {
         this.updatedAt = updatedAt;
     }
 
-    public TransactionPin(User user,String pin) {
+    public TransactionPin(User user,String pin) throws TransactionPinException{
         this.user = user;
-        this.pin = pin;
+        setPin(pin);
         this.attempt = 3;
         this.blocked = false;
         this.createdAt = LocalDateTime.now();
