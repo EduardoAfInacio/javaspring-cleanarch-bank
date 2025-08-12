@@ -1,6 +1,5 @@
 package io.github.eduardoafinacio.usecase;
 
-import io.github.eduardoafinacio.core.domain.User;
 import io.github.eduardoafinacio.core.domain.Wallet;
 
 public interface FindWalletByTaxNumberUseCase {
