@@ -9,6 +9,7 @@ public enum ErrorCodeEnum {
     TR0002("Unavailable balance", "TR-0002"),
     TR0003("Error when transferring", "TR-0003"),
     TRP0001("Transaction PIN is invalid", "TRP-0001"),
+    WA0001("Wallet not found", "WA-0001"),
     ;
 
     private String message;
