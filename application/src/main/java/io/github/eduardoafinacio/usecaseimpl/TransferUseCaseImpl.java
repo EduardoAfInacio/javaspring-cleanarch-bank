@@ -3,13 +3,11 @@ package io.github.eduardoafinacio.usecaseimpl;
 import io.github.eduardoafinacio.core.domain.Transaction;
 import io.github.eduardoafinacio.core.domain.Wallet;
 import io.github.eduardoafinacio.core.exception.NotFoundException;
+import io.github.eduardoafinacio.core.exception.NotificationException;
 import io.github.eduardoafinacio.core.exception.TransferException;
 import io.github.eduardoafinacio.core.exception.enums.ErrorCodeEnum;
 import io.github.eduardoafinacio.gateway.TransferGateway;
-import io.github.eduardoafinacio.usecase.CreateTransactionUseCase;
-import io.github.eduardoafinacio.usecase.FindWalletByTaxNumberUseCase;
-import io.github.eduardoafinacio.usecase.TransactionValidateUseCase;
-import io.github.eduardoafinacio.usecase.TransferUseCase;
+import io.github.eduardoafinacio.usecase.*;
 
 import java.math.BigDecimal;
 
@@ -18,15 +16,17 @@ public class TransferUseCaseImpl implements TransferUseCase {
     private CreateTransactionUseCase createTransactionUseCase;
     private TransactionValidateUseCase transactionValidateUseCase;
     private TransferGateway transferGateway;
+    private UserNotificationUseCase userNotificationUseCase;
 
-    public TransferUseCaseImpl(FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase, CreateTransactionUseCase createTransactionUseCase, TransactionValidateUseCase transactionValidateUseCase, TransferGateway transferGateway) {
+    public TransferUseCaseImpl(FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase, CreateTransactionUseCase createTransactionUseCase, TransactionValidateUseCase transactionValidateUseCase, TransferGateway transferGateway, UserNotificationUseCase userNotificationUseCase) {
         this.findWalletByTaxNumberUseCase = findWalletByTaxNumberUseCase;
         this.createTransactionUseCase = createTransactionUseCase;
         this.transactionValidateUseCase = transactionValidateUseCase;
         this.transferGateway = transferGateway;
+        this.userNotificationUseCase = userNotificationUseCase;
     }
     @Override
-    public Boolean transfer(String fromTaxNumber, String toTaxNumber, BigDecimal value) throws TransferException, NotFoundException {
+    public Boolean transfer(String fromTaxNumber, String toTaxNumber, BigDecimal value) throws TransferException, NotFoundException, NotificationException {
         Wallet from = findWalletByTaxNumberUseCase.findByTaxNumber(fromTaxNumber);
         Wallet to = findWalletByTaxNumberUseCase.findByTaxNumber(toTaxNumber);
 
@@ -38,6 +38,10 @@ public class TransferUseCaseImpl implements TransferUseCase {
         if(transactionValidateUseCase.validate(transaction)) {
             if(!transferGateway.transfer(transaction))
                 throw new TransferException(ErrorCodeEnum.TR0003.getMessage(), ErrorCodeEnum.TR0003.getCode());
+        }
+
+        if(!userNotificationUseCase.notificate(transaction, to.getUser().getEmail())){
+            throw new NotificationException(ErrorCodeEnum.NO0001.getMessage(), ErrorCodeEnum.NO0001.getCode());
         }
 
         return true;
