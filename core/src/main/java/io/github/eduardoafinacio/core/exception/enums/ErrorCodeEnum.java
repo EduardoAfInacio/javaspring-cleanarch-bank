@@ -7,6 +7,7 @@ public enum ErrorCodeEnum {
     ON0004("Error when creating user", "ON-0004"),
     TR0001("Transaction cannot be made by a shopkeeper", "TR-0001"),
     TR0002("Unavailable balance", "TR-0002"),
+    TR0003("Error when transferring", "TR-0003"),
     TRP0001("Transaction PIN is invalid", "TRP-0001"),
     ;
 
