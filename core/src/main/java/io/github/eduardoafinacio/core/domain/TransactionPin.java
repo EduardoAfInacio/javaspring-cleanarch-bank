@@ -24,11 +24,11 @@ public class TransactionPin {
         this.updatedAt = updatedAt;
     }
 
-    public TransactionPin(User user,String pin, Integer attempt, Boolean blocked) {
+    public TransactionPin(User user,String pin) {
         this.user = user;
         this.pin = pin;
-        this.attempt = attempt;
-        this.blocked = blocked;
+        this.attempt = 3;
+        this.blocked = false;
         this.createdAt = LocalDateTime.now();
     }
 
