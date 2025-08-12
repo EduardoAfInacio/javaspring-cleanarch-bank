@@ -1,6 +1,5 @@
 package io.github.eduardoafinacio.usecaseimpl;
 
-import io.github.eduardoafinacio.core.domain.Transaction;
 import io.github.eduardoafinacio.usecase.TransferUseCase;
 
 import java.math.BigDecimal;
