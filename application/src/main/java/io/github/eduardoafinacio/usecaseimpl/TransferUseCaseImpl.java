@@ -29,6 +29,9 @@ public class TransferUseCaseImpl implements TransferUseCase {
         Wallet from = findWalletByTaxNumberUseCase.findByTaxNumber(fromTaxNumber);
         Wallet to = findWalletByTaxNumberUseCase.findByTaxNumber(toTaxNumber);
 
+        from.transferValue(value);
+        to.receiveValue(value);
+
         var transaction = createTransactionUseCase.create(new Transaction(from, to, value));
 
         if(transactionValidateUseCase.validate(transaction)) {
