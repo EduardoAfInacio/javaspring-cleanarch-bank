@@ -5,5 +5,5 @@ import io.github.eduardoafinacio.core.domain.User;
 import io.github.eduardoafinacio.core.domain.Wallet;
 
 public interface CreateUserGateway {
-    Boolean create(User user, Wallet wallet, TransactionPin transactionPin);
+    Boolean create(User user, Wallet wallet);
 }
