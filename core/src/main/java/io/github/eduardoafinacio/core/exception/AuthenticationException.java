@@ -1,6 +1,6 @@
 package io.github.eduardoafinacio.core.exception;
 
-public class AuthenticationException extends RuntimeException {
+public class AuthenticationException extends Exception {
     private String code;
 
     public AuthenticationException(String message, String code) {
