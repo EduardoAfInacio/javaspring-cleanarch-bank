@@ -60,8 +60,17 @@ public class TransactionPin {
         return attempt;
     }
 
-    public void setAttempt(Integer attempt) {
-        this.attempt = attempt;
+    public void setAttempt() {
+        if(this.attempt == 1){
+            this.blocked = true;
+            this.attempt = 0;
+        }else{
+            this.attempt -= 1;
+        }
+    }
+
+    public void resetAttempt(){
+        this.attempt = 3;
     }
 
     public Boolean getBlocked() {
