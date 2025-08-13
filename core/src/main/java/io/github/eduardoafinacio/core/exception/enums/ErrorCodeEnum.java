@@ -11,7 +11,7 @@ public enum ErrorCodeEnum {
     TR0004("Unauthorized transfer", "TR-0004"),
     TRP0001("Transaction PIN is invalid", "TRP-0001"),
     TRP0002("Transaction PIN is blocked", "TRP-0002"),
-    TRP0003("Transaction PIN validation error", "TRP-0003"),
+    TRP0003("Transaction PIN is not correct, %d attempt(s) left", "TRP-0003"),
     WA0001("Wallet not found", "WA-0001"),
     NO0001("Error notifying user", "NO-0001"),
     ATH0001("There was an error in authentication", "ATH-0001"),
@@ -39,5 +39,9 @@ public enum ErrorCodeEnum {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public static String TRP0003getMessage(Integer attempt) {
+        return String.format(TRP0003.message, attempt);
     }
 }
