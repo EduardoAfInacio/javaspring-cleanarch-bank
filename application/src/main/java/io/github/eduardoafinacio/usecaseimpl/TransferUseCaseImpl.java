@@ -31,7 +31,7 @@ public class TransferUseCaseImpl implements TransferUseCase {
         Wallet to = findWalletByTaxNumberUseCase.findByTaxNumber(toTaxNumber);
 
         if(from.getTransactionPin().getBlocked()){
-            throw new TransferException(ErrorCodeEnum.TRP0002.getMessage(), ErrorCodeEnum.TRP0002.getCode());
+            throw new TransactionPinException(ErrorCodeEnum.TRP0002.getMessage(), ErrorCodeEnum.TRP0002.getCode());
         }
 
         transactionPinValidateUseCase.validate(from.getTransactionPin());
