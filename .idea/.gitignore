@@ -8,5 +8,8 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+/dataSources.xml
 
 /material_theme_project_new.xml
+
+
