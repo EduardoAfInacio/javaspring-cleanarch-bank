@@ -8,5 +8,5 @@ import io.github.eduardoafinacio.core.exception.TransferException;
 import java.math.BigDecimal;
 
 public interface TransferUseCase {
-    Boolean transfer(String fromTaxNumber, String toTaxNumber, BigDecimal value) throws TransferException, NotFoundException, NotificationException, InternalServerErrorException;
+    Boolean transfer(String fromTaxNumber, String toTaxNumber, BigDecimal value, String pin) throws TransferException, NotFoundException, NotificationException, InternalServerErrorException;
 }
