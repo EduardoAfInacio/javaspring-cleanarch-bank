@@ -2,10 +2,7 @@ package io.github.eduardoafinacio.usecaseimpl;
 
 import io.github.eduardoafinacio.core.domain.Transaction;
 import io.github.eduardoafinacio.core.domain.Wallet;
-import io.github.eduardoafinacio.core.exception.InternalServerErrorException;
-import io.github.eduardoafinacio.core.exception.NotFoundException;
-import io.github.eduardoafinacio.core.exception.NotificationException;
-import io.github.eduardoafinacio.core.exception.TransferException;
+import io.github.eduardoafinacio.core.exception.*;
 import io.github.eduardoafinacio.core.exception.enums.ErrorCodeEnum;
 import io.github.eduardoafinacio.gateway.TransferGateway;
 import io.github.eduardoafinacio.usecase.*;
@@ -29,7 +26,7 @@ public class TransferUseCaseImpl implements TransferUseCase {
         this.transactionPinValidateUseCase = transactionPinValidateUseCase;
     }
     @Override
-    public Boolean transfer(String fromTaxNumber, String toTaxNumber, BigDecimal value, String pin) throws TransferException, NotFoundException, NotificationException, InternalServerErrorException {
+    public Boolean transfer(String fromTaxNumber, String toTaxNumber, BigDecimal value, String pin) throws TransferException, NotFoundException, NotificationException, InternalServerErrorException, TransactionPinException {
         Wallet from = findWalletByTaxNumberUseCase.findByTaxNumber(fromTaxNumber);
         Wallet to = findWalletByTaxNumberUseCase.findByTaxNumber(toTaxNumber);
 
