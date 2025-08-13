@@ -3,7 +3,6 @@ package io.github.eduardoafinacio.usecaseimpl;
 import io.github.eduardoafinacio.core.exception.AuthenticationException;
 import io.github.eduardoafinacio.core.exception.enums.ErrorCodeEnum;
 import io.github.eduardoafinacio.gateway.UserAuthenticateGateway;
-import io.github.eduardoafinacio.gateway.UserNotificationGateway;
 import io.github.eduardoafinacio.usecase.UserAuthenticateUseCase;
 
 public class UserAuthenticateUseCaseImpl implements UserAuthenticateUseCase {
