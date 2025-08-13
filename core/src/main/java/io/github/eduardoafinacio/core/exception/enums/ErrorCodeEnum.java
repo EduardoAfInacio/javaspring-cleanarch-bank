@@ -10,6 +10,7 @@ public enum ErrorCodeEnum {
     TR0003("Error when transferring", "TR-0003"),
     TR0004("Unauthorized transfer", "TR-0004"),
     TRP0001("Transaction PIN is invalid", "TRP-0001"),
+    TRP0002("Transaction PIN is blocked", "TRP-0002"),
     WA0001("Wallet not found", "WA-0001"),
     NO0001("Error notifying user", "NO-0001"),
     ATH0001("There was an error in authentication", "ATH-0001"),
