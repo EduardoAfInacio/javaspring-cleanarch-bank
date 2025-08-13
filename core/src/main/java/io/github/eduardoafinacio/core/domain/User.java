@@ -13,29 +13,26 @@ public class User {
     private String fullName;
     private TaxNumber taxNumber;
     private UserTypeEnum type;
-    private TransactionPin transactionPin;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public User(UUID id, String email, String password, String fullName, TaxNumber taxNumber, UserTypeEnum type, TransactionPin transactionPin, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(UUID id, String email, String password, String fullName, TaxNumber taxNumber, UserTypeEnum type, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.fullName = fullName;
         this.taxNumber = taxNumber;
         this.type = type;
-        this.transactionPin = transactionPin;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public User(String email, String password, String fullName, TaxNumber taxNumber, UserTypeEnum type, TransactionPin transactionPin) {
+    public User(String email, String password, String fullName, TaxNumber taxNumber, UserTypeEnum type) {
         this.email = email;
         this.password = password;
         this.fullName = fullName;
         this.taxNumber = taxNumber;
         this.type = type;
-        this.transactionPin = transactionPin;
         this.createdAt = LocalDateTime.now();
     }
 
@@ -90,14 +87,6 @@ public class User {
         this.type = type;
     }
 
-    public TransactionPin getTransactionPin() {
-        return transactionPin;
-    }
-
-    public void setTransactionPin(TransactionPin transactionPin) {
-        this.transactionPin = transactionPin;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -114,11 +103,11 @@ public class User {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(getId(), user.getId()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getFullName(), user.getFullName()) && Objects.equals(getTaxNumber(), user.getTaxNumber()) && getType() == user.getType() && Objects.equals(getTransactionPin(), user.getTransactionPin()) && Objects.equals(getCreatedAt(), user.getCreatedAt()) && Objects.equals(getUpdatedAt(), user.getUpdatedAt());
+        return Objects.equals(getId(), user.getId()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getFullName(), user.getFullName()) && Objects.equals(getTaxNumber(), user.getTaxNumber()) && getType() == user.getType() && Objects.equals(getCreatedAt(), user.getCreatedAt()) && Objects.equals(getUpdatedAt(), user.getUpdatedAt());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getEmail(), getPassword(), getFullName(), getTaxNumber(), getType(), getTransactionPin(), getCreatedAt(), getUpdatedAt());
+        return Objects.hash(getId(), getEmail(), getPassword(), getFullName(), getTaxNumber(), getType(), getCreatedAt(), getUpdatedAt());
     }
 }
