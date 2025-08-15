@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class TransactionPin {
     private Long id;
-
     private String pin;
     private Integer attempt;
     private Boolean blocked;
