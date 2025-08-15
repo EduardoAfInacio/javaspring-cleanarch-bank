@@ -40,13 +40,4 @@ public class UserEntity {
     @Column(name = "UpdatedAt", nullable = false)
     private LocalDateTime updatedAt;
 
-    public UserEntity(UUID id, String email, String password, String taxNumber, String fullName, UserTypeEnum type) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.taxNumber = taxNumber;
-        this.fullName = fullName;
-        this.type = type;
-        this.createdAt = LocalDateTime.now();
-    }
 }
