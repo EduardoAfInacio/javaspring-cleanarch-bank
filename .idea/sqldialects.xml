@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/db/migration/V001__CREATE_TABLE_USERS.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/db/migration/V002__CREATE_TABLE_TRANSACTIONS_PIN.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/db/migration/V003__CREATE_TABLE_WALLETS.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/db/migration/V004__CREATE_TABLE_TRANSACTIONS.sql" dialect="GenericSQL" />
+  </component>
+</project>

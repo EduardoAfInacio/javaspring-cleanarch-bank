@@ -1,4 +1,4 @@
-package io.github.eduardoafinacio.entity;
+package io.github.eduardoafinacio.infrastructure.entity;
 
 import io.github.eduardoafinacio.core.domain.enums.TransactionStatusEnum;
 import jakarta.persistence.*;

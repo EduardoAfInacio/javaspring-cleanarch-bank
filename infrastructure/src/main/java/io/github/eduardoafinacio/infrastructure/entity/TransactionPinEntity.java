@@ -1,32 +1,28 @@
-package io.github.eduardoafinacio.entity;
+package io.github.eduardoafinacio.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Wallets")
-public class WalletEntity {
+@Table(name = "TransactionsPin")
+public class TransactionPinEntity {
     @Column(name = "Id", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "Balance", nullable = false)
-    private BigDecimal balance;
+    @Column(name = "Pin", nullable = false)
+    private String pin;
 
-    @OneToOne
-    @JoinColumn(name = "UserId")
-    private UserEntity userEntity;
+    @Column(name = "Attempt", nullable = false)
+    private Integer attempt;
 
-    @OneToOne
-    @JoinColumn(name = "TransactionPinId")
-    private TransactionPinEntity transactionPinEntity;
+    @Column(name = "Blocked", nullable = false)
+    private Boolean blocked;
 
     @Column(name = "CreatedAt", nullable = false)
     private LocalDateTime createdAt;

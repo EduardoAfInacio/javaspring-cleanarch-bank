@@ -1,4 +1,4 @@
-package io.github.eduardoafinacio;
+package io.github.eduardoafinacio.infrastructure;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
