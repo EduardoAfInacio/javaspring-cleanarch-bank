@@ -1,0 +1,52 @@
+package io.github.eduardoafinacio.entity;
+
+import io.github.eduardoafinacio.core.domain.enums.UserTypeEnum;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Users")
+public class UserEntity {
+    @Column(name = "Id", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
+
+    @Column(name = "Email", nullable = false)
+    private String email;
+
+    @Column(name = "Password", nullable = false)
+    private String password;
+
+    @Column(name = "TaxNumber", nullable = false)
+    private String taxNumber;
+
+    @Column(name = "Fullname", nullable = false)
+    private String fullName;
+
+    @Column(name = "Type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserTypeEnum type;
+
+    @Column(name = "CreatedAt", nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "UpdatedAt", nullable = false)
+    private LocalDateTime updatedAt;
+
+    public UserEntity(UUID id, String email, String password, String taxNumber, String fullName, UserTypeEnum type) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.taxNumber = taxNumber;
+        this.fullName = fullName;
+        this.type = type;
+        this.createdAt = LocalDateTime.now();
+    }
+}
