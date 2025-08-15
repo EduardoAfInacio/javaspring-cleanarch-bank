@@ -19,7 +19,7 @@ public class TransactionPinEntity {
     private String pin;
 
     @Column(name = "Attempt", nullable = false)
-    private String attempt;
+    private Integer attempt;
 
     @Column(name = "Blocked", nullable = false)
     private Boolean blocked;
