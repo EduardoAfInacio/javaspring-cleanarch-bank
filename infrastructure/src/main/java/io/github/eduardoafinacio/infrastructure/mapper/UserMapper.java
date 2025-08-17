@@ -1,6 +1,9 @@
 package io.github.eduardoafinacio.infrastructure.mapper;
 
+import io.github.eduardoafinacio.core.domain.TaxNumber;
 import io.github.eduardoafinacio.core.domain.User;
+import io.github.eduardoafinacio.core.exception.TaxNumberException;
+import io.github.eduardoafinacio.infrastructure.dto.request.CreateUserRequest;
 import io.github.eduardoafinacio.infrastructure.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +19,16 @@ public class UserMapper {
                 user.getType(),
                 user.getCreatedAt(),
                 user.getUpdatedAt()
+        );
+    }
+
+    public User toUser(CreateUserRequest request) throws TaxNumberException {
+        return new User(
+                request.email(),
+                request.password(),
+                request.fullname(),
+                new TaxNumber(request.taxNumber()),
+                request.type()
         );
     }
 }
