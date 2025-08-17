@@ -28,6 +28,7 @@ public class User {
     }
 
     public User(String email, String password, String fullName, TaxNumber taxNumber, UserTypeEnum type) {
+        this.id = UUID.randomUUID();
         this.email = email;
         this.password = password;
         this.fullName = fullName;
