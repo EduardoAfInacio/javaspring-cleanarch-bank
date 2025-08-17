@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import static io.github.eduardoafinacio.infrastructure.Utils.Utilities.log;
 
 @Controller
 @RequestMapping("/api/v1/users")
@@ -27,7 +28,9 @@ public class UserController {
 
     @PostMapping("/createUser")
     public BaseResponse<String> createUser(@RequestBody CreateUserRequest request) throws TaxNumberException, EmailException, InternalServerErrorException, TransactionPinException {
+        log.info("Starting to create user::UserController");
         createUserUseCase.create(userMapper.toUser(request), request.pin());
+        log.info("User created successfully::UserController");
         return BaseResponse.<String>builder().success(true).message("User created").build();
     }
 }
