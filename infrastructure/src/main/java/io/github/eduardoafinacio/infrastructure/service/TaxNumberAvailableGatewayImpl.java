@@ -2,8 +2,11 @@ package io.github.eduardoafinacio.infrastructure.service;
 
 import io.github.eduardoafinacio.gateway.TaxNumberAvailableGateway;
 import io.github.eduardoafinacio.infrastructure.repository.UserEntityRepository;
+import org.springframework.stereotype.Service;
+
 import static io.github.eduardoafinacio.infrastructure.Utils.Utilities.log;
 
+@Service
 public class TaxNumberAvailableGatewayImpl implements TaxNumberAvailableGateway {
     private UserEntityRepository userEntityRepository;
 

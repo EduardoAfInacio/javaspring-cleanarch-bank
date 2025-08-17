@@ -9,8 +9,11 @@ import io.github.eduardoafinacio.infrastructure.mapper.WalletMapper;
 import io.github.eduardoafinacio.infrastructure.repository.TransactionPinEntityRepository;
 import io.github.eduardoafinacio.infrastructure.repository.UserEntityRepository;
 import io.github.eduardoafinacio.infrastructure.repository.WalletEntityRepository;
+import org.springframework.stereotype.Service;
+
 import static io.github.eduardoafinacio.infrastructure.Utils.Utilities.log;
 
+@Service
 public class CreateUserGatewayImpl implements CreateUserGateway {
     private UserEntityRepository userEntityRepository;
     private UserMapper userMapper;
