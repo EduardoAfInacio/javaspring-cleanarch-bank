@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import static io.github.eduardoafinacio.infrastructure.Utils.Utilities.log;
 
 @Controller
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
     private CreateUserUseCase createUserUseCase;
