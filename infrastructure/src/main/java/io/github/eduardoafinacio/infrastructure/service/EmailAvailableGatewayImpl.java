@@ -16,6 +16,6 @@ public class EmailAvailableGatewayImpl implements EmailAvailableGateway {
     @Override
     public Boolean emailAvailable(String email) {
         log.info("Starting to check if email is available::EmailAvailableGatewayImpl");
-        return !userEntityRepository.existsByTaxNumber(email);
+        return !userEntityRepository.existsByEmail(email);
     }
 }
