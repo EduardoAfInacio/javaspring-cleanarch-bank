@@ -3,6 +3,7 @@ package io.github.eduardoafinacio.infrastructure.config;
 import io.github.eduardoafinacio.gateway.CreateUserGateway;
 import io.github.eduardoafinacio.gateway.EmailAvailableGateway;
 import io.github.eduardoafinacio.gateway.TaxNumberAvailableGateway;
+import io.github.eduardoafinacio.usecase.CreateUserUseCase;
 import io.github.eduardoafinacio.usecase.EmailAvailableUseCase;
 import io.github.eduardoafinacio.usecase.TaxNumberAvailableUseCase;
 import io.github.eduardoafinacio.usecaseimpl.CreateUserUseCaseImpl;
@@ -25,7 +26,7 @@ public class UserConfig {
     }
 
     @Bean
-    public CreateUserUseCaseImpl createUserUseCase(TaxNumberAvailableUseCase taxNumberAvailableUseCase, EmailAvailableUseCase emailAvailableUseCase, CreateUserGateway createUserGateway){
+    public CreateUserUseCase createUserUseCase(TaxNumberAvailableUseCase taxNumberAvailableUseCase, EmailAvailableUseCase emailAvailableUseCase, CreateUserGateway createUserGateway){
         return new CreateUserUseCaseImpl(taxNumberAvailableUseCase, emailAvailableUseCase, createUserGateway);
     }
 }
