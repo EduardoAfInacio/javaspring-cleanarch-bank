@@ -8,7 +8,6 @@ import io.github.eduardoafinacio.infrastructure.dto.request.CreateUserRequest;
 import io.github.eduardoafinacio.infrastructure.dto.response.BaseResponse;
 import io.github.eduardoafinacio.infrastructure.mapper.UserMapper;
 import io.github.eduardoafinacio.usecase.CreateUserUseCase;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
