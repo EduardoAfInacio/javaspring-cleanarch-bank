@@ -31,4 +31,17 @@ public class UserMapper {
                 request.type()
         );
     }
+
+    public User toUser(UserEntity userEntity) throws TaxNumberException {
+        return new User(
+                userEntity.getId(),
+                userEntity.getEmail(),
+                userEntity.getPassword(),
+                userEntity.getFullName(),
+                new TaxNumber(userEntity.getTaxNumber()),
+                userEntity.getType(),
+                userEntity.getCreatedAt(),
+                userEntity.getUpdatedAt()
+        );
+    }
 }
