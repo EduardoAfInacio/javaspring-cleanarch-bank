@@ -1,6 +1,7 @@
 package io.github.eduardoafinacio.infrastructure.mapper;
 
 import io.github.eduardoafinacio.core.domain.Transaction;
+import io.github.eduardoafinacio.core.domain.enums.TransactionStatusEnum;
 import io.github.eduardoafinacio.core.exception.TaxNumberException;
 import io.github.eduardoafinacio.infrastructure.entity.TransactionEntity;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,18 @@ public class TransactionMapper {
         );
     }
 
+    public TransactionEntity toTransactionEntityForCreation(Transaction transaction) {
+        return new TransactionEntity(
+                transaction.getId(),
+                walletMapper.toWalletEntity(transaction.getFromWallet()),
+                walletMapper.toWalletEntity(transaction.getToWallet()),
+                transaction.getValue(),
+                TransactionStatusEnum.CREATED,
+                transaction.getCreatedAt(),
+                transaction.getUpdatedAt()
+        );
+    }
+
     public Transaction toTransaction(TransactionEntity transactionEntity) throws TaxNumberException {
         return new Transaction(
                 transactionEntity.getId(),
@@ -38,4 +51,6 @@ public class TransactionMapper {
                 transactionEntity.getUpdatedAt()
         );
     }
+
+
 }
