@@ -19,4 +19,4 @@ security:
     secret: 0412c946-a382-4be6-9245-ebde9ef911dd
     expiration: 900
 client:
-  url: https://mock-api.net/api/PicPay-Challenge/ApiValidate
+  url: https://mock-api.net/api/PicPay-Challenge
