@@ -9,6 +9,7 @@ import io.github.eduardoafinacio.infrastructure.mapper.WalletMapper;
 import io.github.eduardoafinacio.infrastructure.repository.TransactionPinEntityRepository;
 import io.github.eduardoafinacio.infrastructure.repository.UserEntityRepository;
 import io.github.eduardoafinacio.infrastructure.repository.WalletEntityRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import static io.github.eduardoafinacio.infrastructure.Utils.Utilities.log;
@@ -32,6 +33,7 @@ public class CreateUserGatewayImpl implements CreateUserGateway {
     }
 
     @Override
+    @Transactional
     public Boolean create(User user, Wallet wallet) {
         try{
             log.info("Starting user creation::CreateUserGatewayImpl");
