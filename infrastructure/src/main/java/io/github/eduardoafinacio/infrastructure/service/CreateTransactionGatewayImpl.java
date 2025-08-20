@@ -4,7 +4,9 @@ import io.github.eduardoafinacio.core.domain.Transaction;
 import io.github.eduardoafinacio.gateway.CreateTransactionGateway;
 import io.github.eduardoafinacio.infrastructure.mapper.TransactionMapper;
 import io.github.eduardoafinacio.infrastructure.repository.TransactionEntityRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateTransactionGatewayImpl implements CreateTransactionGateway {
     private TransactionEntityRepository transactionEntityRepository;
     private TransactionMapper transactionMapper;
