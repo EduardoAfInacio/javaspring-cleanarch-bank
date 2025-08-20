@@ -1,7 +1,6 @@
 package io.github.eduardoafinacio.infrastructure.service;
 
 import io.github.eduardoafinacio.core.domain.Transaction;
-import io.github.eduardoafinacio.core.exception.TaxNumberException;
 import io.github.eduardoafinacio.gateway.CreateTransactionGateway;
 import io.github.eduardoafinacio.infrastructure.mapper.TransactionMapper;
 import io.github.eduardoafinacio.infrastructure.repository.TransactionEntityRepository;
