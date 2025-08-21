@@ -21,6 +21,6 @@ public class ConsultBalanceUseCaseImpl implements ConsultBalanceUseCase {
     @Override
     public BigDecimal consult(String taxNumber) throws TaxNumberException, NotFoundException {
         var wallet = findWalletByTaxNumberUseCase.findByTaxNumber(taxNumber);
-        return consultBalanceGateway.consult(wallet);
+        return wallet.getBalance();
     }
 }
