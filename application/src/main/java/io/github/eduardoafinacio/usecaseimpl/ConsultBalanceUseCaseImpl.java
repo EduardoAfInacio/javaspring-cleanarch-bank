@@ -10,11 +10,9 @@ import io.github.eduardoafinacio.usecase.FindWalletByTaxNumberUseCase;
 import java.math.BigDecimal;
 
 public class ConsultBalanceUseCaseImpl implements ConsultBalanceUseCase {
-    private ConsultBalanceGateway consultBalanceGateway;
     private FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase;
 
     public ConsultBalanceUseCaseImpl(ConsultBalanceGateway consultBalanceGateway, FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase) {
-        this.consultBalanceGateway = consultBalanceGateway;
         this.findWalletByTaxNumberUseCase = findWalletByTaxNumberUseCase;
     }
 
