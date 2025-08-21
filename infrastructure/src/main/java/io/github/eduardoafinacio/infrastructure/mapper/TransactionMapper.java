@@ -40,6 +40,30 @@ public class TransactionMapper {
         );
     }
 
+    public TransactionEntity toTransactionSuccessEntity(Transaction transaction) {
+        return new TransactionEntity(
+                transaction.getId(),
+                walletMapper.toWalletEntity(transaction.getFromWallet()),
+                walletMapper.toWalletEntity(transaction.getToWallet()),
+                transaction.getValue(),
+                TransactionStatusEnum.SUCCESS,
+                transaction.getCreatedAt(),
+                transaction.getUpdatedAt()
+        );
+    }
+
+    public TransactionEntity toTransactionCanceledEntity(Transaction transaction) {
+        return new TransactionEntity(
+                transaction.getId(),
+                walletMapper.toWalletEntity(transaction.getFromWallet()),
+                walletMapper.toWalletEntity(transaction.getToWallet()),
+                transaction.getValue(),
+                TransactionStatusEnum.SUCCESS,
+                transaction.getCreatedAt(),
+                transaction.getUpdatedAt()
+        );
+    }
+
     public Transaction toTransaction(TransactionEntity transactionEntity) throws TaxNumberException {
         return new Transaction(
                 transactionEntity.getId(),
