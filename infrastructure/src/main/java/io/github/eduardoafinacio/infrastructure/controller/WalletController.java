@@ -21,6 +21,6 @@ public class WalletController {
     @GetMapping("/consultBalance/{taxNumber}")
     public BaseResponse<ConsultBalanceResponse> consultBalance(@PathVariable String taxNumber) throws TaxNumberException, NotFoundException {
         var balance = consultBalanceUseCase.consult(taxNumber);
-        return BaseResponse.<ConsultBalanceResponse>builder().result(new ConsultBalanceResponse(balance)).build();
+        return BaseResponse.<ConsultBalanceResponse>builder().success(true).result(new ConsultBalanceResponse(balance)).build();
     }
 }
