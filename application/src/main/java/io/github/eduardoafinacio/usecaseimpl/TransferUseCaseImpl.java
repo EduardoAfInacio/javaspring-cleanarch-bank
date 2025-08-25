@@ -26,24 +26,14 @@ public class TransferUseCaseImpl implements TransferUseCase {
         this.transactionPinValidateUseCase = transactionPinValidateUseCase;
     }
     @Override
-    public Boolean transfer(String fromTaxNumber, String toTaxNumber, BigDecimal value, String pin) throws TransferException, NotFoundException, NotificationException, InternalServerErrorException, TransactionPinException, TaxNumberException {
-        Wallet from = findWalletByTaxNumberUseCase.findByTaxNumber(fromTaxNumber);
-        Wallet to = findWalletByTaxNumberUseCase.findByTaxNumber(toTaxNumber);
+    public Boolean transfer(Transaction transaction) throws TransferException, NotFoundException, NotificationException, InternalServerErrorException, TransactionPinException, TaxNumberException {
 
-        transactionPinValidateUseCase.validate(from.getTransactionPin());
+        transaction.getFromWallet().transferValue(transaction.getValue());
+        transaction.getToWallet().receiveValue(transaction.getValue());
 
-        from.transferValue(value);
-        to.receiveValue(value);
 
-        var transaction = createTransactionUseCase.create(new Transaction(from, to, value));
-
-        if(transactionValidateUseCase.validate(transaction)) {
-            if(!transferGateway.transfer(transaction))
-                throw new TransferException(ErrorCodeEnum.TR0003.getMessage(), ErrorCodeEnum.TR0003.getCode());
-        }
-
-        if(!userNotificationUseCase.notificate(transaction, to.getUser().getEmail())){
-            throw new NotificationException(ErrorCodeEnum.NO0001.getMessage(), ErrorCodeEnum.NO0001.getCode());
+        if(!transferGateway.transfer(transaction)){
+            throw new TransferException(ErrorCodeEnum.TR0003.getMessage(), ErrorCodeEnum.TR0003.getCode());
         }
 
         return true;
