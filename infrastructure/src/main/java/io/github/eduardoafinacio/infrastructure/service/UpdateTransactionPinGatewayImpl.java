@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 public class UpdateTransactionPinGatewayImpl implements UpdateTransactionPinGateway {
     @Override
     public TransactionPin update(TransactionPin transactionPin) {
-        return null;
+        return new TransactionPin(transactionPin.getId(), transactionPin.getPin(), transactionPin.getAttempt(), transactionPin.getBlocked(), transactionPin.getCreatedAt(), transactionPin.getUpdatedAt());
     }
 }
