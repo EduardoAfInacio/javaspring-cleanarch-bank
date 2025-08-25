@@ -44,7 +44,7 @@ public class WalletConfig {
     }
 
     @Bean
-    public TransferUseCase transferUseCase(FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase, CreateTransactionUseCase createTransactionUseCase, TransactionValidateUseCase transactionValidateUseCase, TransferGateway transferGateway, UserNotificationUseCase userNotificationUseCase, TransactionPinValidateUseCase transactionPinValidateUseCase){
-        return new TransferUseCaseImpl(findWalletByTaxNumberUseCase, createTransactionUseCase, transactionValidateUseCase, transferGateway, userNotificationUseCase, transactionPinValidateUseCase);
+    public TransferUseCase transferUseCase(TransferGateway transferGateway){
+        return new TransferUseCaseImpl(transferGateway);
     }
 }

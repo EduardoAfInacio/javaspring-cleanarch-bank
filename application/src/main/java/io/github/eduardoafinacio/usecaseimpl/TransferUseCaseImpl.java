@@ -10,20 +10,10 @@ import io.github.eduardoafinacio.usecase.*;
 import java.math.BigDecimal;
 
 public class TransferUseCaseImpl implements TransferUseCase {
-    private FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase;
-    private CreateTransactionUseCase createTransactionUseCase;
-    private TransactionValidateUseCase transactionValidateUseCase;
     private TransferGateway transferGateway;
-    private UserNotificationUseCase userNotificationUseCase;
-    private TransactionPinValidateUseCase transactionPinValidateUseCase;
 
-    public TransferUseCaseImpl(FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase, CreateTransactionUseCase createTransactionUseCase, TransactionValidateUseCase transactionValidateUseCase, TransferGateway transferGateway, UserNotificationUseCase userNotificationUseCase, TransactionPinValidateUseCase transactionPinValidateUseCase) {
-        this.findWalletByTaxNumberUseCase = findWalletByTaxNumberUseCase;
-        this.createTransactionUseCase = createTransactionUseCase;
-        this.transactionValidateUseCase = transactionValidateUseCase;
+    public TransferUseCaseImpl(TransferGateway transferGateway) {
         this.transferGateway = transferGateway;
-        this.userNotificationUseCase = userNotificationUseCase;
-        this.transactionPinValidateUseCase = transactionPinValidateUseCase;
     }
     @Override
     public Boolean transfer(Transaction transaction) throws TransferException, NotFoundException, NotificationException, InternalServerErrorException, TransactionPinException, TaxNumberException {
