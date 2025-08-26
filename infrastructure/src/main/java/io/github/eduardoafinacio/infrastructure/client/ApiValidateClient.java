@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(name = "ApiValidate", url = "${client.url}")
 public interface ApiValidateClient {
 
-    @GetMapping
+    @GetMapping("/ApiValidate")
     ApiValidateResponse validate();
 }
