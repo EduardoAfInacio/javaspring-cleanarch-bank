@@ -30,7 +30,6 @@ public class TransactionMapper {
 
     public TransactionEntity toTransactionEntityForCreation(Transaction transaction) {
         return new TransactionEntity(
-                transaction.getId(),
                 walletMapper.toWalletEntity(transaction.getFromWallet()),
                 walletMapper.toWalletEntity(transaction.getToWallet()),
                 transaction.getValue(),
