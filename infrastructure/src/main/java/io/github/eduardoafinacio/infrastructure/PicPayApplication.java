@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients(basePackages = "io.github.eduardoafinacio.infrastructure.client")
 public class PicPayApplication {
     public static void main(String[] args) {
         SpringApplication.run(PicPayApplication.class, args);
