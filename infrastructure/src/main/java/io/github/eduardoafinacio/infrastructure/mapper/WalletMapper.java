@@ -37,6 +37,17 @@ public class WalletMapper {
         );
     }
 
+    public WalletEntity toWalletEntityUpdate(Wallet wallet){
+        return new WalletEntity(
+                wallet.getId(),
+                wallet.getBalance(),
+                userMapper.toUserEntity(wallet.getUser()),
+                transactionPinMapper.toTransactionPinEntity(wallet.getTransactionPin()),
+                wallet.getCreatedAt(),
+                wallet.getUpdatedAt()
+        );
+    }
+
     public Wallet toWallet(WalletEntity walletEntity) throws TaxNumberException {
         if(walletEntity == null) return null;
 
