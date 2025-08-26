@@ -1,6 +1,5 @@
 package io.github.eduardoafinacio.infrastructure.controller;
 
-import io.github.eduardoafinacio.core.domain.TransactionPin;
 import io.github.eduardoafinacio.core.exception.*;
 import io.github.eduardoafinacio.infrastructure.dto.request.TransferRequest;
 import io.github.eduardoafinacio.infrastructure.dto.response.BaseResponse;
@@ -11,20 +10,23 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/wallet")
 public class WalletController {
-    private ConsultBalanceUseCase consultBalanceUseCase;
-    private TransferUseCase transferUseCase;
-    private CreateTransactionUseCase createTransactionUseCase;
-    private FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase;
-    private TransactionValidateUseCase transactionValidateUseCase;
-    private TransactionPinValidateUseCase transactionPinValidateUseCase;
+    final private ConsultBalanceUseCase consultBalanceUseCase;
+    final private TransferUseCase transferUseCase;
+    final private CreateTransactionUseCase createTransactionUseCase;
+    final private FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase;
+    final private TransactionValidateUseCase transactionValidateUseCase;
+    final private TransactionPinValidateUseCase transactionPinValidateUseCase;
+    final private UserNotificationUseCase userNotificationUseCase;
 
-    public WalletController(ConsultBalanceUseCase consultBalanceUseCase, TransferUseCase transferUseCase, CreateTransactionUseCase createTransactionUseCase, FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase, TransactionValidateUseCase transactionValidateUseCase, TransactionPinValidateUseCase transactionPinValidateUseCase) {
+
+    public WalletController(ConsultBalanceUseCase consultBalanceUseCase, TransferUseCase transferUseCase, CreateTransactionUseCase createTransactionUseCase, FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase, TransactionValidateUseCase transactionValidateUseCase, TransactionPinValidateUseCase transactionPinValidateUseCase, UserNotificationUseCase userNotificationUseCase) {
         this.consultBalanceUseCase = consultBalanceUseCase;
         this.transferUseCase = transferUseCase;
         this.createTransactionUseCase = createTransactionUseCase;
         this.findWalletByTaxNumberUseCase = findWalletByTaxNumberUseCase;
         this.transactionValidateUseCase = transactionValidateUseCase;
         this.transactionPinValidateUseCase = transactionPinValidateUseCase;
+        this.userNotificationUseCase = userNotificationUseCase;
     }
 
     @GetMapping("/consultBalance/{taxNumber}")
@@ -47,6 +49,8 @@ public class WalletController {
         transactionValidateUseCase.validate(transaction);
 
         transferUseCase.transfer(transaction);
+
+        userNotificationUseCase.notificate(transaction, from.getUser().getEmail());
         return BaseResponse.<String>builder().success(true).message("Transferred successfully").build();
     }
 }
