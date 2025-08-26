@@ -30,8 +30,8 @@ public class TransactionMapper {
 
     public TransactionEntity toTransactionEntityForCreation(Transaction transaction) {
         return new TransactionEntity(
-                walletMapper.toWalletEntity(transaction.getFromWallet()),
-                walletMapper.toWalletEntity(transaction.getToWallet()),
+                walletMapper.toWalletEntityUpdate(transaction.getFromWallet()),
+                walletMapper.toWalletEntityUpdate(transaction.getToWallet()),
                 transaction.getValue(),
                 TransactionStatusEnum.CREATED,
                 transaction.getCreatedAt(),
@@ -42,8 +42,8 @@ public class TransactionMapper {
     public TransactionEntity toTransactionSuccessEntity(Transaction transaction) {
         return new TransactionEntity(
                 transaction.getId(),
-                walletMapper.toWalletEntity(transaction.getFromWallet()),
-                walletMapper.toWalletEntity(transaction.getToWallet()),
+                walletMapper.toWalletEntityUpdate(transaction.getFromWallet()),
+                walletMapper.toWalletEntityUpdate(transaction.getToWallet()),
                 transaction.getValue(),
                 TransactionStatusEnum.SUCCESS,
                 transaction.getCreatedAt(),
@@ -57,7 +57,7 @@ public class TransactionMapper {
                 walletMapper.toWalletEntity(transaction.getFromWallet()),
                 walletMapper.toWalletEntity(transaction.getToWallet()),
                 transaction.getValue(),
-                TransactionStatusEnum.SUCCESS,
+                TransactionStatusEnum.CANCELED,
                 transaction.getCreatedAt(),
                 transaction.getUpdatedAt()
         );
