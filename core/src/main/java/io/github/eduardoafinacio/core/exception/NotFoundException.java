@@ -7,4 +7,8 @@ public class NotFoundException extends Exception {
         super(message);
         this.code = code;
     }
+
+    public String getCode() {
+        return code;
+    }
 }
