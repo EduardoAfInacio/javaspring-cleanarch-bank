@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class HandleControllerAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<BaseResponse<ValidationError>> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception, WebRequest request) {
+    public ResponseEntity<BaseResponse<ValidationError>> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         var error = new ErrorResponse(
                 ErrorCodeEnum.IR0001.getMessage(),
                 ErrorCodeEnum.IR0001.getCode(),
