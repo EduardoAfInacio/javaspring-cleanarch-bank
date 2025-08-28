@@ -15,6 +15,7 @@ public enum ErrorCodeEnum {
     WA0001("Wallet not found", "WA-0001"),
     NO0001("Error notifying user", "NO-0001"),
     ATH0001("There was an error in authentication", "ATH-0001"),
+    IR0001("Invalid request", "IR-0001")
     ;
 
     private String message;
