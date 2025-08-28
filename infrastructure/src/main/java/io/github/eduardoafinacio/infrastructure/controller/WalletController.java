@@ -5,6 +5,8 @@ import io.github.eduardoafinacio.infrastructure.dto.request.TransferRequest;
 import io.github.eduardoafinacio.infrastructure.dto.response.BaseResponse;
 import io.github.eduardoafinacio.infrastructure.dto.response.ConsultBalanceResponse;
 import io.github.eduardoafinacio.usecase.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,13 +32,13 @@ public class WalletController {
     }
 
     @GetMapping("/consultBalance/{taxNumber}")
-    public BaseResponse<ConsultBalanceResponse> consultBalance(@PathVariable String taxNumber) throws TaxNumberException, NotFoundException {
+    public ResponseEntity<BaseResponse<ConsultBalanceResponse>> consultBalance(@PathVariable String taxNumber) throws TaxNumberException, NotFoundException {
         var balance = consultBalanceUseCase.consult(taxNumber);
-        return BaseResponse.<ConsultBalanceResponse>builder().success(true).result(new ConsultBalanceResponse(balance)).build();
+        return ResponseEntity.ok().body(BaseResponse.<ConsultBalanceResponse>builder().success(true).result(new ConsultBalanceResponse(balance)).build());
     }
 
     @PostMapping("/transfer")
-    public BaseResponse<String> transfer(@RequestBody TransferRequest request) throws TransferException, TaxNumberException, NotificationException, NotFoundException, InternalServerErrorException, TransactionPinException {
+    public ResponseEntity<BaseResponse<String>> transfer(@RequestBody TransferRequest request) throws TransferException, TaxNumberException, NotificationException, NotFoundException, InternalServerErrorException, TransactionPinException {
 
         var from = findWalletByTaxNumberUseCase.findByTaxNumber(request.fromTaxNumber());
 
@@ -51,6 +53,6 @@ public class WalletController {
         transferUseCase.transfer(transaction);
 
         userNotificationUseCase.notificate(transaction, from.getUser().getEmail());
-        return BaseResponse.<String>builder().success(true).message("Transferred successfully").build();
+        return ResponseEntity.ok().body(BaseResponse.<String>builder().success(true).message("Transferred successfully").build());
     }
 }

@@ -11,6 +11,8 @@ import io.github.eduardoafinacio.usecase.CreateUserUseCase;
 import io.github.eduardoafinacio.usecase.EmailAvailableUseCase;
 import io.github.eduardoafinacio.usecase.TaxNumberAvailableUseCase;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +37,7 @@ public class UserController {
     }
 
     @PostMapping("/createUser")
-    public BaseResponse<String> createUser(@Valid @RequestBody CreateUserRequest request) throws TaxNumberException, EmailException, InternalServerErrorException, TransactionPinException {
+    public ResponseEntity<BaseResponse<String>> createUser(@Valid @RequestBody CreateUserRequest request) throws TaxNumberException, EmailException, InternalServerErrorException, TransactionPinException {
         log.info("Starting to validate tax number and email::UserController");
         taxNumberAvailableUseCase.taxNumberAvailable(request.taxNumber());
         emailAvailableUseCase.emailAvailable(request.email());
@@ -43,6 +45,6 @@ public class UserController {
         log.info("Starting to create user::UserController");
         createUserUseCase.create(userMapper.toUser(request), request.pin());
         log.info("User created successfully::UserController");
-        return BaseResponse.<String>builder().success(true).message("User created").build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(BaseResponse.<String>builder().success(true).message("User created").build());
     }
 }
