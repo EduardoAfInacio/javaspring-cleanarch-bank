@@ -1,4 +1,4 @@
-rootProject.name = 'java-cleanarch-picpay'
+rootProject.name = 'javaspring-cleanarch-bank'
 include 'core'
 include 'usecase'
 include 'application'
